@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>刘依林Irene · 运营实践者 | 个人网页</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #f0f9ff 0%, #e6f2fc 100%);
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #cbdff2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7cb9e8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a9fdc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 导航栏 baby blue风格 */
+        .navbar {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            border-bottom: 1px solid rgba(108, 180, 238, 0.3);
+            backdrop-filter: blur(2px);
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2c7cb6, #6cb4ee);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c5a7a;
+            transition: 0.2s ease;
+            font-size: 1rem;
+        }
+        .nav-links a:hover {
+            color: #1e88e5;
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(108, 180, 238, 0.2);
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+            letter-spacing: -0.3px;
+            background: linear-gradient(120deg, #0f4c6e, #2c7cb6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .section-sub {
+            text-align: center;
+            color: #2c5a7a;
+            margin-bottom: 48px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* HERO 个人介绍区 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 40px 0 20px 0;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: #d9effa;
+            color: #1e6ea7;
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #0f4c6e;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #2c7cb6, #7cb9e8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .intro-tagline {
+            font-size: 1.2rem;
+            color: #2c5a7a;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .trait-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0 24px 0;
+        }
+        .trait-item {
+            background: white;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #cfe7fa;
+            color: #1e6ea7;
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background: #2c7cb6;
+            color: white;
+            box-shadow: 0 8px 18px rgba(44,124,182,0.2);
+        }
+        .btn-primary:hover {
+            background: #1e6ea7;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(44,124,182,0.3);
+        }
+        .btn-outline {
+            border-color: #bdd8f0;
+            color: #1e5a7d;
+            background: white;
+        }
+        .btn-outline:hover {
+            border-color: #2c7cb6;
+            color: #2c7cb6;
+            transform: translateY(-3px);
+            background: #f0f9ff;
+        }
+        .hero-avatar {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+        .avatar-circle {
+            width: 260px;
+            height: 260px;
+            background: #fce4ec;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+        .avatar-circle:hover {
+            transform: scale(1.02);
+        }
+        .avatar-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .avatar-circle {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* 时间轴样式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2c7cb6, #7cb9e8);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            margin-left: 50%;
+        }
+        .timeline-dot {
+            position: absolute;
+            right: -10px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #2c7cb6;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px #d9effa;
+            z-index: 2;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+            right: auto;
+        }
+        .timeline-content {
+            background: white;
+            border-radius: 24px;
+            padding: 24px 28px;
+            width: 90%;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.06);
+            transition: 0.2s;
+            border: 1px solid #cfe7fa;
+        }
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            border-color: #7cb9e8;
+            box-shadow: 0 20px 28px -12px rgba(44,124,182,0.15);
+        }
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2c7cb6;
+            letter-spacing: 0.3px;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .timeline-company {
+            font-weight: 500;
+            color: #2c5a7a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        .timeline-dept {
+            font-size: 0.85rem;
+            color: #5b8db0;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+        .detail-toggle {
+            background: none;
+            border: 1px solid #bdd8f0;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2c7cb6;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #f0f9ff;
+        }
+        .detail-toggle:hover {
+            background-color: #d9effa;
+            border-color: #2c7cb6;
+        }
+        .timeline-details {
+            display: none;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px dashed #cfe7fa;
+        }
+        .timeline-details.show {
+            display: block;
+        }
+        .timeline-desc ul {
+            padding-left: 1.2rem;
+            margin-top: 6px;
+        }
+        .timeline-desc li {
+            margin-bottom: 6px;
+        }
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+                padding-left: 50px;
+            }
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+            .timeline-content {
+                width: 100%;
+            }
+        }
+
+        /* 兴趣卡片 */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .interest-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #cfe7fa;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.03);
+        }
+        .interest-card:hover {
+            transform: translateY(-6px);
+            border-color: #7cb9e8;
+            box-shadow: 0 20px 28px -12px rgba(44,124,182,0.15);
+        }
+        .interest-icon {
+            font-size: 2.8rem;
+            color: #2c7cb6;
+            margin-bottom: 20px;
+        }
+        .interest-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #0f4c6e;
+        }
+        .interest-desc {
+            color: #2c5a7a;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        .photo-btn {
+            background: #eef2fc;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #2c7cb6;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .photo-btn:hover {
+            background: #d9effa;
+            transform: scale(1.02);
+        }
+
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 32px;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+        .modal-content img {
+            width: 100%;
+            border-radius: 24px;
+            margin-top: 16px;
+            max-height: 60vh;
+            object-fit: cover;
+        }
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #5b8db0;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            color: #2c7cb6;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 技能标签 */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .skill-tag {
+            background: white;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1e5a7d;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #cfe7fa;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        .skill-tag i {
+            color: #2c7cb6;
+            font-size: 1.1rem;
+        }
+        .skill-tag:hover {
+            border-color: #2c7cb6;
+            color: #2c7cb6;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -10px rgba(44,124,182,0.2);
+        }
+
+        /* 联系区域 */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .contact-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 28px;
+            text-align: center;
+            width: 260px;
+            transition: 0.2s;
+            border: 1px solid #cfe7fa;
+        }
+        .contact-card i {
+            font-size: 2.2rem;
+            color: #2c7cb6;
+            margin-bottom: 16px;
+        }
+        .contact-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .contact-card a, .contact-card p {
+            color: #2c5a7a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover {
+            color: #1e88e5;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .social-links a {
+            font-size: 1.8rem;
+            color: #5b8db0;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #2c7cb6;
+            transform: translateY(-4px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            color: #5b8db0;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.6);
+            border-top: 1px solid rgba(108,180,238,0.2);
+        }
+        .vibe-glow {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(108,180,238,0.15);
+            backdrop-filter: blur(8px);
+            padding: 8px 16px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2c7cb6;
+            pointer-events: none;
+            z-index: 99;
+            border: 1px solid rgba(44,124,182,0.3);
+        }
+
+        /* 调试帮助浮窗 */
+        .help-tip {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(44,124,182,0.9);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            z-index: 100;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .help-tip:hover {
+            background: #2c7cb6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .trait-list {
+                justify-content: center;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+            .navbar {
+                justify-content: center;
+                flex-direction: column;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .interests-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <div class="logo">✦ Irene's Space</div>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#timeline">经历</a>
+            <a href="#interests">兴趣</a>
+            <a href="#skills">技能</a>
+            <a href="#contact">联系</a>
+        </div>
+    </nav>
+
+    <!-- 个人介绍 -->
+    <section id="home">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-star-of-life"></i> INTJ · 理性浪漫</div>
+                <h1>我是 <span class="highlight">刘依林 Irene</span><br>欢迎来到我的小世界</h1>
+                <div class="intro-tagline">🌟 对一切保持好奇 · 责任感超强 · 永远向上</div>
+                <div class="trait-list">
+                    <span class="trait-item"><i class="fas fa-brain"></i> INTJ</span>
+                    <span class="trait-item"><i class="fas fa-ruler"></i> 175cm</span>
+                    <span class="trait-item"><i class="fas fa-question-circle"></i> 无限好奇</span>
+                    <span class="trait-item"><i class="fas fa-hand-sparkles"></i> 责任感超强</span>
+                </div>
+                <div class="btn-group">
+                    <a href="#timeline" class="btn btn-primary">📌 查看经历</a>
+                    <a href="#interests" class="btn btn-outline">🎵 我的兴趣</a>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-circle">
+                    <svg class="avatar-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs><radialGradient id="skinGrad" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#FFE0C0"/><stop offset="100%" stop-color="#FFD0A8"/></radialGradient><radialGradient id="cheek" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFB6C1" stop-opacity="0.6"/><stop offset="100%" stop-color="#FFB6C1" stop-opacity="0"/></radialGradient></defs>
+                        <circle cx="100" cy="100" r="95" fill="#FFF0F5" opacity="0.3"/>
+                        <path d="M70 45 C60 55, 50 80, 55 120 C58 145, 70 160, 85 170 C75 160, 68 140, 65 115 C60 85, 65 55, 75 45 Z" fill="#5D4037"/>
+                        <path d="M130 45 C140 55, 150 80, 145 120 C142 145, 130 160, 115 170 C125 160, 132 140, 135 115 C140 85, 135 55, 125 45 Z" fill="#5D4037"/>
+                        <path d="M65 45 C75 30, 125 30, 135 45 C140 55, 145 70, 142 90 C138 70, 125 55, 100 52 C75 55, 62 70, 58 90 C55 70, 60 55, 65 45 Z" fill="#4E342E"/>
+                        <path d="M68 50 C75 38, 92 35, 105 40 C95 42, 82 48, 75 58 C72 62, 68 60, 68 50 Z" fill="#5D4037"/>
+                        <path d="M105 40 C118 38, 132 42, 138 55 C130 48, 118 45, 105 44 Z" fill="#5D4037"/>
+                        <ellipse cx="100" cy="90" rx="38" ry="45" fill="url(#skinGrad)"/>
+                        <path d="M75 72 Q80 67, 88 69" stroke="#6D4C41" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M125 72 Q120 67, 112 69" stroke="#6D4C41" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <ellipse cx="82" cy="83" rx="6" ry="7" fill="white"/><ellipse cx="118" cy="83" rx="6" ry="7" fill="white"/>
+                        <circle cx="83" cy="84" r="3.5" fill="#3E2723"/><circle cx="119" cy="84" r="3.5" fill="#3E2723"/>
+                        <circle cx="84.5" cy="82.5" r="1.5" fill="white"/><circle cx="120.5" cy="82.5" r="1.5" fill="white"/>
+                        <path d="M74 90 Q82 93, 90 90" stroke="#C68B6E" stroke-width="0.8" fill="none"/>
+                        <path d="M110 90 Q118 93, 126 90" stroke="#C68B6E" stroke-width="0.8" fill="none"/>
+                        <circle cx="68" cy="100" r="7" fill="url(#cheek)"/><circle cx="132" cy="100" r="7" fill="url(#cheek)"/>
+                        <path d="M100 85 L98 95 Q100 98, 102 95 Z" fill="#E8B48C" opacity="0.6"/>
+                        <path d="M88 106 Q100 116, 112 106" stroke="#B95C3A" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <path d="M62 130 L70 125 L130 125 L138 130 L135 170 L65 170 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <path d="M90 125 L100 135 L110 125" fill="none" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M85 135 Q100 140, 115 135" stroke="#E2E8F0" stroke-width="1" fill="none"/>
+                        <path d="M62 130 C55 140, 48 155, 45 170 L65 170 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                        <path d="M138 130 C145 140, 152 155, 155 170 L135 170 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+                        <circle cx="62" cy="88" r="2.5" fill="#F8F9FA" stroke="#CFD8DC" stroke-width="0.5"/>
+                        <circle cx="138" cy="88" r="2.5" fill="#F8F9FA" stroke="#CFD8DC" stroke-width="0.5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历时间轴 -->
+    <section id="timeline">
+        <div class="container">
+            <h2 class="section-title">📅 运营旅程 · 时间轴</h2>
+            <div class="section-sub">从电商运营到商业化策略，用数据驱动增长，用创意撬动生意。</div>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2025.12 – 至今</div><div class="timeline-title">玩具行业运营实习生</div><div class="timeline-company"><i class="fab fa-bytedance"></i> 字节跳动 · 抖音电商</div><div class="timeline-dept">部门：电商业务部 - 玩具文创行业</div><button class="detail-toggle" data-target="detail-bytedance">▼ 查看详情</button><div id="detail-bytedance" class="timeline-details"><div class="timeline-desc"><ul><li><strong>类目基建与招商：</strong>主导三坑（汉服/Cosplay/Lo）从0到1供给建设，协同引入站外TOP100大商20+及自助商家100+。</li><li><strong>大促操盘：</strong>深度参与年终促与年货节，负责核心数据追踪，助力团队分别达成106%（部门TOP3）与106%（部门TOP1）业绩。</li><li><strong>价格力治理：</strong>日均处理50+爆款SKU全网比价申诉与加补审核，保障价格竞争力。</li><li><strong>自播任务赛：</strong>设计阶梯奖励机制，活动商家任务完成率66%（高于大盘10%），撬动1000+小时直播时长。</li><li><strong>新品热点引爆：</strong>主导“闪魂”新品线上拆卡试点，打造570万+次播放话题，挑战赛作品VV达29.6万。</li></ul></div></div></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2025.06 – 2025.10</div><div class="timeline-title">商业化行业运营实习生</div><div class="timeline-company"><i class="fab fa-squarespace"></i> 小红书 · 商业化</div><div class="timeline-dept">部门：商业生态 - 家居房产行业</div><button class="detail-toggle" data-target="detail-xhs">▼ 查看详情</button><div id="detail-xhs" class="timeline-details"><div class="timeline-desc"><ul><li><strong>投放优化：</strong>深度参与家居房产客户日常投放指导，输出优化方案，包装5+客户case赋能销售。</li><li><strong>成本测算：</strong>完成6-8月家居房产行业20000+客户成本benchmark测算，覆盖7个二级、40个三级类目。</li><li><strong>运营提效：</strong>主导直播培训落地，优化页面承接逻辑，UVCTR从15%提升至25%。</li><li><strong>行业洞察：</strong>撰写房产月度行业月报（6月浏览量3W+，互动量提升40%），沉淀优质素材库。</li></ul></div></div></div></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="timeline-date">2024.03 – 2024.05</div><div class="timeline-title">用户运营实习生</div><div class="timeline-company"><i class="fab fa-product-hunt"></i> 得物App</div><div class="timeline-dept">部门：社区运营部 - 用户增长组</div><button class="detail-toggle" data-target="detail-dewu">▼ 查看详情</button><div id="detail-dewu" class="timeline-details"><div class="timeline-desc"><ul><li><strong>用户增长策略：</strong>策划「首单礼金+跨品类满减」组合策略，首单转化率提升27%，获客成本降低16%。</li><li><strong>老客唤醒：</strong>针对30-60天未购用户设计「限时膨胀金+专属品类券」权益包，沉默用户召回率提升22%。</li><li><strong>数据驱动：</strong>识别高价值衰退客群，精准投放召回券，复购率提升18%；推动优惠券系统迭代，核销率提升至41%。</li></ul></div></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好板块（已替换为您的本地图片） -->
+    <section id="interests">
+        <div class="container">
+            <h2 class="section-title">🎵 兴趣与瞬间</h2>
+            <div class="section-sub">生活不止有数据和运营，还有音乐、舞台、大海与远方。</div>
+            <div class="interests-grid">
+                <div class="interest-card"><div class="interest-icon"><i class="fas fa-music"></i></div><h3>古筝</h3><div class="interest-desc">八级古筝，指尖流淌传统韵味，享受民乐带来的沉静与力量。</div><button class="photo-btn" data-interest="guzheng">📸 查看照片</button></div>
+                <div class="interest-card"><div class="interest-icon"><i class="fas fa-crown"></i></div><h3>选美 / 舞台</h3><div class="interest-desc">热爱舞台与聚光灯，参与多项赛事，展现自信与优雅。</div><button class="photo-btn" data-interest="beauty">📸 查看照片</button></div>
+                <div class="interest-card"><div class="interest-icon"><i class="fas fa-plane"></i></div><h3>旅行</h3><div class="interest-desc">用脚步丈量世界，记录不同城市的温度与故事。</div><button class="photo-btn" data-interest="travel">📸 查看照片</button></div>
+                <div class="interest-card"><div class="interest-icon"><i class="fas fa-umbrella-beach"></i></div><h3>海岛爱好者</h3><div class="interest-desc">喜欢蔚蓝大海、沙滩与日落，追逐每一座岛屿的浪漫。</div><button class="photo-btn" data-interest="island">📸 查看照片</button></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能板块 -->
+    <section id="skills"><div class="container"><h2 class="section-title">⚡ 硬核技能树</h2><div class="section-sub">跨界融合 · 数据驱动 & 商业感知 & 创意编码</div><div class="skills-grid"><div class="skill-tag"><i class="fas fa-language"></i> 雅思7.0</div><div class="skill-tag"><i class="fas fa-chart-line"></i> CFA 二级</div><div class="skill-tag"><i class="fas fa-laptop-code"></i> Vibe coding</div><div class="skill-tag"><i class="fas fa-paintbrush-fine"></i> Figma协作</div><div class="skill-tag"><i class="fas fa-database"></i> SQL</div><div class="skill-tag"><i class="fab fa-python"></i> Python (Pandas/分析)</div></div></div></section>
+
+    <!-- 联系区域 -->
+    <section id="contact"><div class="container"><h2 class="section-title">📮 保持连接</h2><div class="section-sub">一起聊聊运营、商业或代码，随时欢迎灵感碰撞。</div><div class="contact-flex"><div class="contact-card"><i class="fas fa-envelope"></i><h4>电子邮箱</h4><a href="mailto:15206333838@163.com">15206333838@163.com</a></div><div class="contact-card"><i class="fab fa-weixin"></i><h4>微信</h4><p>liuyilin51276</p></div><div class="contact-card"><i class="fab fa-xiaohongshu" style="font-family: 'Inter';">📕</i><h4>小红书</h4><p>耶不错</p></div></div><div class="social-links"><a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></div></div></section>
+</div>
+
+<footer><p>✨ 用好奇心驱动 · 刘依林Irene 的运营与创造之旅 ✨</p><p id="copyright-year"></p></footer>
+<div class="vibe-glow"><i class="fas fa-crown"></i> INTJ · 保持节奏</div>
+<div class="help-tip" id="helpTip">🖼️ 照片不显示？点击查看解决方案</div>
+
+<!-- 模态框 -->
+<div id="photoModal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><h3 id="modalTitle">照片</h3><img id="modalImage" src="" alt="个人照片"><p id="modalCaption" style="margin-top: 12px; color: #2c5a7a;"></p></div></div>
+
+<script>
+    // 动态年份
+    document.getElementById('copyright-year').innerHTML = `© ${new Date().getFullYear()} 刘依林Irene · 运营+数据+创意 | 永远好奇，永远可靠`;
+    
+    // 实习经历折叠/展开
+    document.querySelectorAll('.detail-toggle').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const details = document.getElementById(this.getAttribute('data-target'));
+            if (details) {
+                details.classList.toggle('show');
+                this.innerHTML = details.classList.contains('show') ? '▲ 收起详情' : '▼ 查看详情';
+            }
+        });
+    });
+    
+    // 照片数据（本地文件）
+    const photoData = {
+        guzheng: { title: "🎵 古筝时光", img: "guzheng.png", caption: "练习古筝八级，享受指尖流淌的韵律。" },
+        beauty:  { title: "👑 舞台·选美瞬间", img: "xuanmei.png", caption: "自信与优雅，每一次登台都是成长。" },
+        travel:  { title: "✈️ 旅行足迹", img: "lvyou.png", caption: "用相机记录世界的每一份惊喜。" },
+        island:  { title: "🏝️ 海岛日记", img: "haidao.png", caption: "蔚蓝大海，治愈一切。" }
+    };
+    
+    const modal = document.getElementById('photoModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeBtn = document.querySelector('.close-modal');
+    
+    // 为每个照片按钮绑定事件，并增加加载错误处理
+    document.querySelectorAll('.photo-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const key = this.getAttribute('data-interest');
+            const data = photoData[key];
+            if (data) {
+                modalTitle.innerText = data.title;
+                modalImage.src = data.img;
+                modalCaption.innerText = data.caption;
+                modal.style.display = 'flex';
+                
+                // 监听图片加载失败，给出明确提示
+                modalImage.onerror = function() {
+                    modalCaption.innerHTML = `⚠️ 图片加载失败！<br>请确认文件“${data.img}”是否与网页放在同一文件夹，且文件名完全一致（包括扩展名如 .png）。<br>当前路径：${data.img}`;
+                    modalImage.style.opacity = '0.5';
+                };
+                modalImage.onload = function() {
+                    modalImage.style.opacity = '1';
+                    modalCaption.innerText = data.caption;
+                };
+            } else {
+                console.warn('未找到照片数据');
+            }
+        });
+    });
+    
+    // 关闭模态框
+    closeBtn.onclick = () => modal.style.display = 'none';
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+    
+    // 帮助浮窗：显示调试信息
+    const helpTip = document.getElementById('helpTip');
+    helpTip.onclick = () => {
+        alert("🔍 照片显示排查指南：\n1. 确保四个图片文件（guzheng.png、xuanmei.png、lvyou.png、haidao.png）与网页放在同一文件夹。\n2. 检查文件名是否完全一致（注意大小写，扩展名必须是 .png）。\n3. 如果图片是 .jpg 格式，请修改 photoData 中的扩展名。\n4. 刷新页面后，打开浏览器控制台（F12）查看具体错误。\n5. 若仍无法显示，可尝试使用网络图片链接替换测试。");
+    };
+    
+    // 平滑滚动
+    document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId !== "#" && targetId.startsWith('#')) {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, targetId);
+                }
+            }
+        });
+    });
+    
+    console.log("%c✨ 刘依林Irene的个人空间已开启 ✨", "color: #2c7cb6; font-size: 15px; font-weight: bold;");
+    console.log("%c💡 如果兴趣照片无法显示，请检查图片文件是否与HTML放在同一目录，且文件名匹配。", "color: #f97316; font-size: 12px;");
+</script>
+</body>
+</html>
